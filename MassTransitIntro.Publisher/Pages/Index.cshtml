@@ -1,0 +1,42 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "New meeting";
+}
+
+<div>
+    @if (Model.MessageSent.HasValue)
+    {
+        @if (Model.MessageSent.Value)
+        {
+            <p class="text-success">Message correctly sent</p>
+        }
+    }
+
+    <h1 class="display-4">New meeting</h1>
+    <form method="post">
+        <div class="form-group">
+            <label for="Title">Title</label>
+            <input asp-for="Title" id="Title" type="text" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="Creator">Creator</label>
+            <input asp-for="Creator" id="Creator" type="text" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="Participants">Participants</label>
+            <input asp-for="Participants" id="Participants" type="text" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="StartsOn">Starts On</label>
+            <input asp-for="StartsOn" id="StartsOn" type="datetime-local" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="EndsOn">Ends On</label>
+            <input asp-for="EndsOn" id="EndsOn" type="datetime-local" class="form-control" />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit" asp-page-handler="CreateMeeting">Create</button>
+        </div>
+    </form>
+</div>
